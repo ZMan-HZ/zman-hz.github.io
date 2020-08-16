@@ -67,7 +67,7 @@ index_generator:
   order_by: -date
 
 # Category & Tag
-logo: Yume Shoka
+#logo: Yume Shoka
 email: manzhzh@163.com
 #default_category: uncategorized
 category_map:
@@ -100,7 +100,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: shoka
+theme: concise
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
