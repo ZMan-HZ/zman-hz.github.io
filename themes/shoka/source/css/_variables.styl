@@ -1,0 +1,163 @@
+//
+// Variables
+// ==================================================
+
+// Typography
+// Font, line-height, and elements colors.
+// --------------------------------------------------
+get_font_family(config) {
+  $custom-family = hexo-config('font.' + config + '.family');
+  return $custom-family is a 'string' ? $custom-family : null;
+}
+
+// Font families.
+$font-family-chinese      = "PingFang SC", "Microsoft YaHei";
+
+$font-family-base         = $font-family-chinese, sans-serif;
+$font-family-base         = get_font_family('global'), $font-family-base if get_font_family('global');
+
+$font-family-logo         = $font-family-base;
+$font-family-logo         = get_font_family('title'), $font-family-base if get_font_family('title');
+
+$font-family-headings     = $font-family-base;
+$font-family-headings     = get_font_family('headings'), $font-family-logo if get_font_family('headings');
+
+$font-family-posts        = $font-family-base;
+$font-family-posts        = get_font_family('posts'), $font-family-base if get_font_family('posts');
+
+$font-family-monospace    = consolas, Menlo, $font-family-chinese;
+$font-family-monospace    = get_font_family('codes'), consolas, Menlo, $font-family-chinese if get_font_family('codes');
+
+
+// Font size
+$font-size-base           = (hexo-config('font.enable') and hexo-config('font.global.size') is a 'unit') ? unit(hexo-config('font.global.size'), em) : 1em;
+$font-size-smallest       = .75em;
+$font-size-smaller        = .8125em;
+$font-size-small          = .875em;
+$font-size-medium         = 1em;
+$font-size-large          = 1.125em;
+$font-size-larger         = 1.25em;
+$font-size-largest        = 1.5em;
+
+
+// Headings font size
+$font-size-headings-step  = .125em;
+$font-size-headings-base  = (hexo-config('font.enable') and hexo-config('font.headings.size') is a 'unit') ? unit(hexo-config('font.headings.size'), em) : 1.625em;
+
+
+// Global line height
+$line-height-base         = 2;
+$line-height-code-block   = 1.6; // Can't be less than 1.3;
+
+
+// Z-index master list
+// --------------------------------------------------
+$zindex-0       = -1;
+$zindex-1       = 1;
+$zindex-2       = 9;
+$zindex-3       = 99;
+$zindex-4       = 999;
+$zindex-5       = 9999;
+
+
+// Pagination
+// --------------------------------------------------
+
+
+// Layout sizes
+// --------------------------------------------------
+$sidebar-width                = 240;
+$sidebar-desktop              = unit($sidebar-width, 'px');
+$content-offset               = 12px;
+$content-wrap                 = 'calc(100% - %s)' % unit($sidebar-width + $content-offset, 'px');
+
+$content-desktop-padding        = 20px;
+$content-tablet-padding         = 10px;
+$content-mobile-padding         = 8px;
+
+$content-desktop              = 'calc(100% - %s)' % unit($content-desktop-padding / 2, 'px');
+$content-desktop-large        = 1160px;
+$content-desktop-largest      = 73%;
+
+
+
+// Site Meta
+
+$site-meta-text-align           = center;
+$font-size-title                = (hexo-config('font.enable') and hexo-config('font.title.size') is a 'unit') ? unit(hexo-config('font.title.size'), em) : 1.375em;
+$font-size-subtitle             = $font-size-small;
+
+
+// Posts Collpase
+// --------------------------------------------------
+$posts-collapse-margin          = 35px;
+$posts-collapse-margin-mobile   = 10px;
+
+
+// Components
+// --------------------------------------------------
+
+//  .post-expand .post-eof
+$post-eof-margin-top          = 80px; //  or 160px for more white space;
+$post-eof-margin-bottom       = 60px; //  or 120px for less white space;
+
+// Note colors
+// --------------------------------------------------
+// Read note light_bg_offset from NexT config and set in "$lbg%" to use it as string variable.
+
+
+
+// Tabs border radius
+// --------------------------------------------------
+$tbr                        = 0;
+
+// Label colors
+// --------------------------------------------------
+
+// Borders
+// --------------------------------------------------
+$box-shadow-inner                 = 5px;
+$box-shadow                       = initial;
+
+$border-radius-inner              = initial;
+$border-radius                    = initial;
+
+
+// --------------------------------------------------
+
+
+
+$default-border = #e1e1e1;
+$default-bg = #f8f8f9;
+$default-text = #666;
+$default-hover = #333;
+
+  // Primary
+$primary-border = #ddc7da;
+$primary-bg = #fdf8ff;
+$primary-text = #875999;
+$primary-hover = #5e2786;
+
+  // Info
+$info-border = #a9d5de;
+$info-bg = #f8ffff;
+$info-text = #276f86;
+$info-hover = #0e566c;
+
+  // Success
+$success-border = #a3c293;
+$success-bg = #fcfff5;
+$success-text = #2c662d;
+$success-hover = #1a531b;
+
+  // Warning
+$warning-border = #c9ba9b;
+$warning-bg = #fffaf3;
+$warning-text = #573a08;
+$warning-hover = #794b02;
+
+  // Danger
+$danger-border = #e0b4b4;
+$danger-bg = #fff6f6;
+$danger-text = #9f3a38;
+$danger-hover = #912d2B;

@@ -1,0 +1,45 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Day Day Up",
+    "description": "Things could be easier say it verbally than write it out",
+    "home_page_url": "https://zman-hz.github.io",
+    "items": [
+        {
+            "id": "https://zman-hz.github.io/2020/08/16/Mac%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7/",
+            "url": "https://zman-hz.github.io/2020/08/16/Mac%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7/",
+            "title": "MacOS 如何显示隐藏文件使用小技巧",
+            "date_published": "2020-08-16T11:13:24.000Z",
+            "content_html": "<p>MacOS上的隐藏文件都是以.开头的文件夹或者文件，不像windows那样可以通过设置属性来使其隐藏。</p>\n<a id=\"more\"></a>\n<p>显示隐藏文件</p>\n<figure class=\"highlight bash\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">defaults write com.apple.finder AppleShowAllFiles -bool <span class=\"literal\">true</span>;</span><br><span class=\"line\">KillAll Finder</span><br></pre></td></tr></table></figure>\n\n<p>不显示隐藏文件</p>\n<figure class=\"highlight bash\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">defaults write com.apple.finder AppleShowAllFiles -bool <span class=\"literal\">false</span>;</span><br><span class=\"line\">KillAll Finder</span><br></pre></td></tr></table></figure>",
+            "tags": [
+                "MacOS",
+                "隐藏文件"
+            ]
+        },
+        {
+            "id": "https://zman-hz.github.io/2020/08/16/Blog-test/",
+            "url": "https://zman-hz.github.io/2020/08/16/Blog-test/",
+            "title": "Blog test",
+            "date_published": "2020-08-16T05:42:11.000Z",
+            "content_html": "<p>Hello, World!</p>\n<a id=\"more\"></a>\n<p>This is my first markdown blog.<br>Things could be easier say it verbally than write it out!<br>Don’t just promise, Prove; Don’t just dream, Do!</p>\n",
+            "tags": [
+                "Java",
+                "Oracle",
+                "Spring",
+                "Spring Boot"
+            ]
+        },
+        {
+            "id": "https://zman-hz.github.io/2020/08/16/hello-world/",
+            "url": "https://zman-hz.github.io/2020/08/16/hello-world/",
+            "title": "Hello World",
+            "date_published": "2020-08-16T01:50:46.134Z",
+            "content_html": "<p>Welcome to <a href=\"https://hexo.io/\">Hexo</a>! This is your very first post. Check <a href=\"https://hexo.io/docs/\">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href=\"https://hexo.io/docs/troubleshooting.html\">troubleshooting</a> or you can ask me on <a href=\"https://github.com/hexojs/hexo/issues\">GitHub</a>.</p>\n<a id=\"more\"></a>\n\n<h2 id=\"Quick-Start\"><a href=\"#Quick-Start\" class=\"headerlink\" title=\"Quick Start\"></a>Quick Start</h2><h3 id=\"Create-a-new-post\"><a href=\"#Create-a-new-post\" class=\"headerlink\" title=\"Create a new post\"></a>Create a new post</h3><figure class=\"highlight bash\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">$ hexo new <span class=\"string\">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>\n\n<p>More info: <a href=\"https://hexo.io/docs/writing.html\">Writing</a></p>\n<h3 id=\"Run-server\"><a href=\"#Run-server\" class=\"headerlink\" title=\"Run server\"></a>Run server</h3><figure class=\"highlight bash\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">$ hexo server</span><br></pre></td></tr></table></figure>\n\n<p>More info: <a href=\"https://hexo.io/docs/server.html\">Server</a></p>\n<h3 id=\"Generate-static-files\"><a href=\"#Generate-static-files\" class=\"headerlink\" title=\"Generate static files\"></a>Generate static files</h3><figure class=\"highlight bash\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">$ hexo generate</span><br></pre></td></tr></table></figure>\n\n<p>More info: <a href=\"https://hexo.io/docs/generating.html\">Generating</a></p>\n<h3 id=\"Deploy-to-remote-sites\"><a href=\"#Deploy-to-remote-sites\" class=\"headerlink\" title=\"Deploy to remote sites\"></a>Deploy to remote sites</h3><figure class=\"highlight bash\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">$ hexo deploy</span><br></pre></td></tr></table></figure>\n\n<p>More info: <a href=\"https://hexo.io/docs/one-command-deployment.html\">Deployment</a></p>\n",
+            "tags": [
+                "JavaScript",
+                "Vue",
+                "React",
+                "Node.js"
+            ]
+        }
+    ]
+}
