@@ -13,7 +13,7 @@ timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://zman-hz.github.io
+url: https://zman-hz.github.io/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -67,9 +67,7 @@ index_generator:
   order_by: -date
 
 # Category & Tag
-#logo: Yume Shoka
-email: manzhzh@163.com
-#default_category: uncategorized
+default_category: uncategorized
 category_map:
 tag_map:
 
@@ -100,11 +98,27 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: concise
+theme: purer
 
 # Deployment
-## Docs: https://hexo.io/docs/deployment.html
+## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
   repository: git@github.com:ZMan-HZ/zman-hz.github.io.git
   branch: blog
+  
+markdown:
+  html: true
+  xhtmlOut: true
+  breaks: true
+  langPrefix:
+  linkify: true
+  typographer:
+  quotes: “”‘’
+  anchors:
+    level: 1
+    permalink: false
+    separator: '-'
+  plugins:
+    - '@iktakahiro/markdown-it-katex'
+    #- markdown-it-emjoi

@@ -3,14 +3,16 @@
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
-    <title>标签: MacOS | Day Day Up</title>
+    <title>repository | Day Day Up</title>
     <meta name="description" content="Things could be easier say it verbally than write it out">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Day Day Up">
-<meta property="og:url" content="https://zman-hz.github.io/tags/MacOS/index.html">
+<meta property="og:title" content="repository">
+<meta property="og:url" content="https://zman-hz.github.io/repository/index.html">
 <meta property="og:site_name" content="Day Day Up">
 <meta property="og:description" content="Things could be easier say it verbally than write it out">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-18T02:19:06.000Z">
+<meta property="article:modified_time" content="2020-08-18T02:19:57.015Z">
 <meta property="article:author" content="Alex Man">
 <meta property="article:tag" content="Java, 后端, 笔记">
 <meta name="twitter:card" content="summary">
@@ -183,37 +185,64 @@
 </header>
 
         <section class="main-section">
-            <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+            
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>-->
+<style>
+    .aside-fixture {
+        display: none !important;
+    }
+    .main-section {
+        max-width: unset;
+    }
+</style>
+<main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
     <article class="content article article-archives article-type-list" itemscope="">
         <header class="article-header">
-            <h1 itemprop="title">tag : MacOS</h1>
-            <p class="text-gray-600">共 1 篇文章</p>
+            <h1 itemprop="title">repository</h1>
+            <p class="text-gray-600">I have <span id="repo-count">0</span> projects on GitHub </p>
         </header>
-        <div class="article-body">
-            
-    
-        <section class="year-archive">
-    <header>
-        <h1><a >2020</a></h1>
-    </header>
-    <div class="archive-content">
-        
-            <a href="/2020/08/19/MacOS%E5%A6%82%E4%BD%95%E6%98%BE%E7%A4%BA%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6/" class="post-item">
-                <div class="post-time">08-19</div>
-                <div class="post-title">MacOS如何显示隐藏文件</div>
-            </a>
-        
-    </div>
-</section>
-
-    
-
-
+        <div id="repo-root" class="article-body">
         </div>
     </article>
     
 
 </main>
+<script id="repo-template" type="text/html">
+    <div>
+    {{#if loading}}
+    <p v-if="loading">Loading...</p>
+    {{/if}}
+    <div class="repos">
+        {{#each repos_sorted}}
+        <div v-for="repo in repos_sorted" key="{{this.id}}" class="repo">
+            <header>
+                <h3 class="repo-title">
+                    <a href="{{ this.html_url }}">{{this.full_name}}</a>
+                </h3>
+            </header>
+            <p class="repo-body">
+                {{ this.description }}
+            </p>
+            <div class="repo-meta">
+                <div class="repo-meta-inner">
+                    <span class="repo-lang">{{ this.language }}</span>
+                    <span class="repo-star"><i class="iconfont icon-star"></i> {{ this.stargazers_count }}</span>
+                    <span class="repo-fork"><i class="iconfont icon-code-fork"></i> {{ this.forks_count }}</span>
+                    <span class="meta meta-last-updated">
+                        <i class="icon icon-clock"></i>
+                        <time datetime="repo.updated_at">{{ this.updated_at.substring(0, this.updated_at.lastIndexOf("T")) }}</time>
+                    </span>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    </div>
+</script>
+
+
+
 
         </section>
         <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
@@ -247,6 +276,11 @@
 <script src="/js/dom-event.min.js"></script>
 
 <script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+    <div class="hidden invisible" id="github-username">zman-hz</div>
+    
+<script src="/js/repository.min.js"></script>
+
 
 
 <script src="/js/search.min.js"></script>
