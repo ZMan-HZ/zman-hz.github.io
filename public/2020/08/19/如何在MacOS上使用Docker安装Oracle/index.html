@@ -11,13 +11,15 @@
 <meta property="og:site_name" content="Day Day Up">
 <meta property="og:description" content="本篇文章旨在备忘当初是如何在自己的Mac上安装并使用Oracle的。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zman-hz.github.io/2020/08/19/%E5%A6%82%E4%BD%95%E5%9C%A8MacOS%E4%B8%8A%E4%BD%BF%E7%94%A8Docker%E5%AE%89%E8%A3%85Oracle/img/dockerdashboard.jpg">
 <meta property="article:published_time" content="2020-08-19T13:10:24.000Z">
-<meta property="article:modified_time" content="2020-08-19T13:56:13.439Z">
+<meta property="article:modified_time" content="2020-08-19T14:53:02.636Z">
 <meta property="article:author" content="Alex Man">
 <meta property="article:tag" content="MacOS">
 <meta property="article:tag" content="Docker">
 <meta property="article:tag" content="Oracle">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zman-hz.github.io/2020/08/19/%E5%A6%82%E4%BD%95%E5%9C%A8MacOS%E4%B8%8A%E4%BD%BF%E7%94%A8Docker%E5%AE%89%E8%A3%85Oracle/img/dockerdashboard.jpg">
 
     
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
@@ -238,7 +240,7 @@
                 </span>
                 
     
-        <span class="post-wordcount" itemprop="wordCount">字数统计: 977(字)</span>
+        <span class="post-wordcount" itemprop="wordCount">字数统计: 1k(字)</span>
     
     
         <span class="post-readcount" itemprop="timeRequired">阅读时长: 4(分)</span>
@@ -275,6 +277,8 @@ download an oracle database and place it in the equvilent version folder, such a
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop oracle</span><br></pre></td></tr></table></figure>
 <p>再</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start oracle</span><br></pre></td></tr></table></figure>
+<p>如果不想敲命令行启动oracle，你也可以使用Docker的Dashboard来点点鼠标就可以了。<br>
+<img src="img/dockerdashboard.jpg" alt="Docker Dashboard"></p>
 <p><strong>经过如上步骤之后，如果没错误，Oracle就是成功安装了。</strong><br>
 <strong>因为是使用的Oracle 12 以上版本，所以你需要了解Oracle的Container Database（CDB） 跟 Plugin Database（PDB）的区别。</strong></p>
 <p>参考log如下：</p>
