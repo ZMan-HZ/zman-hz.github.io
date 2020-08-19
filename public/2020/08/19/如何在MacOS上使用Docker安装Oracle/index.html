@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html  lang="zh-CN" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>如何在MacOS上使用Docker安装Oracle | Day Day Up</title>
+    <meta name="description" content="本篇文章旨在备忘当初是如何在自己的Mac上安装并使用Oracle的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何在MacOS上使用Docker安装Oracle">
+<meta property="og:url" content="https://zman-hz.github.io/2020/08/19/%E5%A6%82%E4%BD%95%E5%9C%A8MacOS%E4%B8%8A%E4%BD%BF%E7%94%A8Docker%E5%AE%89%E8%A3%85Oracle/index.html">
+<meta property="og:site_name" content="Day Day Up">
+<meta property="og:description" content="本篇文章旨在备忘当初是如何在自己的Mac上安装并使用Oracle的。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-19T13:10:24.000Z">
+<meta property="article:modified_time" content="2020-08-19T13:48:22.199Z">
+<meta property="article:author" content="Alex Man">
+<meta property="article:tag" content="MacOS">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="Oracle">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css" rel="stylesheet">
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/zman-hz" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="/images/avatar.jpeg" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">Alex Man</h2>
+            <h3 id="title" class="hidden xl:block">Java Devloper &amp; Desiger</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Hangzhou, China
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="搜索" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="搜索" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">首页</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">归档</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">分类</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">标签</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">项目</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">友链</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">关于</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://github.com/zman-hz">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/null">
+                <i class="iconfont social-icon icon-telegram"></i>
+                <span class="menu-title hidden lg:inline">menu.telegram</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/null">
+                <i class="iconfont social-icon icon-twitter"></i>
+                <span class="menu-title hidden lg:inline">menu.twitter</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            如何在MacOS上使用Docker安装Oracle
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/2020/08/19/%E5%A6%82%E4%BD%95%E5%9C%A8MacOS%E4%B8%8A%E4%BD%BF%E7%94%A8Docker%E5%AE%89%E8%A3%85Oracle/" class="article-date">
+	  <time datetime="2020-08-19T13:10:24.000Z" itemprop="datePublished">8月 19</time>
+	</a>
+</span>
+
+                
+    <span class="article-category">
+    <i class="iconfont icon-folder"></i>
+    <a class="article-category-link" href="/categories/MacOS/">MacOS</a>
+  </span>
+
+
+                
+    <span class="article-tags">
+    <i class="iconfont icon-tag"></i>
+    <a class="article-tag-none-link" href="/tags/Docker/" rel="tag">Docker</a>, <a class="article-tag-none-link" href="/tags/MacOS/" rel="tag">MacOS</a>, <a class="article-tag-none-link" href="/tags/Oracle/" rel="tag">Oracle</a>
+  </span>
+
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/2020/08/19/%E5%A6%82%E4%BD%95%E5%9C%A8MacOS%E4%B8%8A%E4%BD%BF%E7%94%A8Docker%E5%AE%89%E8%A3%85Oracle/#comments" class="article-comment-link">
+                        评论
+                    </a>
+                </span>
+                
+    
+        <span class="post-wordcount" itemprop="wordCount">字数统计: 967(字)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">阅读时长: 4(分)</span>
+    
+
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <p>本篇文章旨在备忘当初是如何在自己的Mac上安装并使用Oracle的。</p>
+<a id="more"></a>
+<h1 id="1-前期准备工作">1 前期准备工作</h1>
+<p>由于自己的电脑是Mac，并且在工作中也是一直使用Oracle，但是难受的地方是，商业化做的不错的oracle竟然没有MacOS的安装包。木得办法，兵来将挡，水来土堰，办法总比困难多，想办法解决呀！</p>
+<h2 id="Step-1-1-clone-下载Oracle的Docker镜像">Step 1.1 clone/下载Oracle的Docker镜像</h2>
+<p>主要是需要oracke的Dockerfile， get docker images here:<br>
+<a target="_blank" rel="noopener" href="https://github.com/oracle/docker-images">https://github.com/oracle/docker-images</a><br>
+下载完成后，进入你刚刚下载完成的路径中，如下代码：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> docker-images/OracleDatabase/SingleInstance/dockerfiles</span><br></pre></td></tr></table></figure>
+<h2 id="Step-2-下载Oracle的数据库的instance">Step 2 下载Oracle的数据库的instance</h2>
+<p>链接URL： <a target="_blank" rel="noopener" href="http://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html">http://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html</a><br>
+download an oracle database and place it in the equvilent version folder, such as 12.2.0.1, then run below command.<br>
+下载的时候需要有Oracle账户，相信即便没有，申请也很容易。<br>
+下载完成后，把下载的zip包放到<strong>对应版本号</strong>的文件中，比如你下载的是12.2.0.1版本的，然后使用如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./buildDockerImage.sh -v 12.2.0.1 -e</span><br></pre></td></tr></table></figure>
+<p>此步骤比较耗时，大概有<strong>21</strong>个步骤要跑。要耐心等待，如果出现链接超时的情况，基本就是第<strong>7</strong>步的时候。强烈建议你早晨早点起床，肯定就能秒过第<strong>7</strong>步，不要问为什么，实践出真知。哈哈哈哈</p>
+<h2 id="Step-2-1-安装oracle-instance并映射Docker中的端口及数据文件到本地端口及本地路径">Step 2.1 安装oracle instance并映射Docker中的端口及数据文件到本地端口及本地路径</h2>
+<p>map to local port and data file</p>
+<ul>
+<li>注意修改命令行中的路径</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name oracle -p 1521:1521 -p 5500:5500 -v /Users/<span class="variable">$&#123;user&#125;</span>/idocker/oradata:/opt/oracle/oradata oracle/database:12.2.0.1-ee</span><br></pre></td></tr></table></figure>
+<p>注意数据文件已经map到 （/你上面指定路径/oradata）下。此时就算你删除了container，这些数据文件还是会被保留的。<br>
+对应的log如下，注意到了最后，会停在那里，估计run命令最后调用类似docker logs -f oracle这样的命令，会tail -f类似的输出，所以我们可以直接<strong>新建一个窗口</strong>使用了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop oracle</span><br></pre></td></tr></table></figure>
+<p>再</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start oracle</span><br></pre></td></tr></table></figure>
+<p><strong>经过如上步骤之后，如果没错误，Oracle就是成功安装了。</strong><br>
+<strong>因为是使用的Oracle 12 以上版本，所以你需要了解Oracle的Container Database（CDB） 跟 Plugin Database（PDB）的区别。</strong></p>
+<p>参考log如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">$ docker run --name oracle -p 1521:1521 -p 5500:5500 -v /Users/example/oradata:/opt/oracle/oradata oracle/database:12.2.0.1-ee</span><br><span class="line">ORACLE PASSWORD FOR SYS, SYSTEM AND PDBADMIN: scXX7Cj+1m0=1</span><br><span class="line"> </span><br><span class="line">LSNRCTL <span class="keyword">for</span> Linux: Version 12.2.0.1.0 - Production on 20-MAY-2017 14:25:30</span><br><span class="line"> </span><br><span class="line">Copyright (c) 1991, 2016, Oracle.  All rights reserved.</span><br><span class="line"> </span><br><span class="line">Starting /opt/oracle/product/12.2.0.1/dbhome_1/bin/tnslsnr: please <span class="built_in">wait</span>...</span><br><span class="line"> </span><br><span class="line">TNSLSNR <span class="keyword">for</span> Linux: Version 12.2.0.1.0 - Production</span><br><span class="line">System parameter file is /opt/oracle/product/12.2.0.1/dbhome_1/network/admin/listener.ora</span><br><span class="line">Log messages written to /opt/oracle/diag/tnslsnr/c9f09116cc83/listener/alert/log.xml</span><br><span class="line">Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC1)))</span><br><span class="line">Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=0.0.0.0)(PORT=1521)))</span><br><span class="line"> </span><br><span class="line">……</span><br><span class="line"> </span><br><span class="line">SQL&gt; Disconnected from Oracle Database 12c Enterprise Edition Release 12.2.0.1.0 - 64bit Production</span><br><span class="line"><span class="comment">#########################</span></span><br><span class="line">DATABASE IS READY TO USE!</span><br><span class="line"><span class="comment">#########################</span></span><br><span class="line">The following output is now a tail of the alert.log:</span><br><span class="line">Completed: alter pluggable database ORCLPDB1 open</span><br><span class="line">2017-05-20T14:31:25.862061+00:00</span><br><span class="line">ORCLPDB1(3):CREATE SMALLFILE TABLESPACE <span class="string">&quot;USERS&quot;</span> LOGGING  DATAFILE  <span class="string">&#x27;/opt/oracle/oradata/ORCLCDB/ORCLPDB1/users01.dbf&#x27;</span> SIZE 5M REUSE AUTOEXTEND ON NEXT  1280K MAXSIZE UNLIMITED  EXTENT MANAGEMENT LOCAL  SEGMENT SPACE MANAGEMENT  AUTO</span><br><span class="line">ORCLPDB1(3):Completed: CREATE SMALLFILE TABLESPACE <span class="string">&quot;USERS&quot;</span> LOGGING  DATAFILE  <span class="string">&#x27;/opt/oracle/oradata/ORCLCDB/ORCLPDB1/users01.dbf&#x27;</span> SIZE 5M REUSE AUTOEXTEND ON NEXT  1280K MAXSIZE UNLIMITED  EXTENT MANAGEMENT LOCAL  SEGMENT SPACE MANAGEMENT  AUTO</span><br><span class="line">ORCLPDB1(3):ALTER DATABASE DEFAULT TABLESPACE <span class="string">&quot;USERS&quot;</span></span><br><span class="line">ORCLPDB1(3):Completed: ALTER DATABASE DEFAULT TABLESPACE <span class="string">&quot;USERS&quot;</span></span><br><span class="line">2017-05-20T14:31:26.657295+00:00</span><br><span class="line">ALTER SYSTEM SET control_files=<span class="string">&#x27;/opt/oracle/oradata/ORCLCDB/control01.ctl&#x27;</span> SCOPE=SPFILE;</span><br><span class="line">   ALTER PLUGGABLE DATABASE ORCLPDB1 SAVE STATE</span><br><span class="line">Completed:    ALTER PLUGGABLE DATABASE ORCLPDB1 SAVE STATE</span><br><span class="line">  </span><br><span class="line">2017-05-20T14:41:16.140414+00:00</span><br><span class="line">ORCLPDB1(3):Resize operation completed <span class="keyword">for</span> file<span class="comment"># 10, old size 337920K, new size 358400K</span></span><br></pre></td></tr></table></figure>
+<h2 id="当然你build好的镜像也是可以push到自己的Docker-Hub中，我私人的Docker-Hub如下：">当然你build好的镜像也是可以push到自己的Docker Hub中，我私人的Docker Hub如下：</h2>
+<p><a target="_blank" rel="noopener" href="https://hub.docker.com/repository/docker/zhenzhenman/oracle12">https://hub.docker.com/repository/docker/zhenzhenman/oracle12</a></p>
+<p>至于如何操作以及Oracle的CDB和PDB，TableSpace等等，请看下回分解。。。</p>
+
+        </div>
+        
+
+    </article>
+    
+    <section id="comments">
+        
+
+        
+    </section>
+
+
+    
+
+</main>
+
+
+<aside style="" id="sidebar" class="aside aside-fixture">
+    <div class="toc-sidebar">
+        <nav id="toc" class="article-toc">
+            <h3 class="toc-title">文章目录</h3>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">1 前期准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-1-1-clone-%E4%B8%8B%E8%BD%BDOracle%E7%9A%84Docker%E9%95%9C%E5%83%8F"><span class="toc-number">1.1.</span> <span class="toc-text">Step 1.1 clone&#x2F;下载Oracle的Docker镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-2-%E4%B8%8B%E8%BD%BDOracle%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84instance"><span class="toc-number">1.2.</span> <span class="toc-text">Step 2 下载Oracle的数据库的instance</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-2-1-%E5%AE%89%E8%A3%85oracle-instance%E5%B9%B6%E6%98%A0%E5%B0%84Docker%E4%B8%AD%E7%9A%84%E7%AB%AF%E5%8F%A3%E5%8F%8A%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6%E5%88%B0%E6%9C%AC%E5%9C%B0%E7%AB%AF%E5%8F%A3%E5%8F%8A%E6%9C%AC%E5%9C%B0%E8%B7%AF%E5%BE%84"><span class="toc-number">1.3.</span> <span class="toc-text">Step 2.1 安装oracle instance并映射Docker中的端口及数据文件到本地端口及本地路径</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%93%E7%84%B6%E4%BD%A0build%E5%A5%BD%E7%9A%84%E9%95%9C%E5%83%8F%E4%B9%9F%E6%98%AF%E5%8F%AF%E4%BB%A5push%E5%88%B0%E8%87%AA%E5%B7%B1%E7%9A%84Docker-Hub%E4%B8%AD%EF%BC%8C%E6%88%91%E7%A7%81%E4%BA%BA%E7%9A%84Docker-Hub%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="toc-number">1.4.</span> <span class="toc-text">当然你build好的镜像也是可以push到自己的Docker Hub中，我私人的Docker Hub如下：</span></a></li></ol></li></ol>
+        </nav>
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a target="_blank" rel="noopener" href="https://github.com/zman-hz">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a href="/null">
+                <i class="iconfont icon-telegram"></i>
+            </a>
+        
+            <a href="/null">
+                <i class="iconfont icon-twitter"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'c7359a6732cadb4c7760',
+        clientSecret: '10f342a32949cd260a8f2e56817d1b2c00d3ac18',
+        repo: 'zman-hz.github.io',
+        owner: 'zman-hz',
+        admin: ['zman-hz'],
+        id: md5(location.pathname),
+        distractionFreeMode: true
+    })
+    gitalk.render('comments')
+</script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>
