@@ -34,7 +34,7 @@ download an oracle database and place it in the equvilent version folder, such a
 
  ## Step 2.1 安装oracle instance并映射Docker中的端口及数据文件到本地端口及本地路径 
  map to local port and data file
-- 注意修改命令行中的路径
+- 注意修改命令行中的路径(第一个冒号之前的路径)
 ```bash
 docker run --name oracle -p 1521:1521 -p 5500:5500 -v /Users/${user}/idocker/oradata:/opt/oracle/oradata oracle/database:12.2.0.1-ee
 ```
