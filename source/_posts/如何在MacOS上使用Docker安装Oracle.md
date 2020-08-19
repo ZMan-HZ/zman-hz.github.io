@@ -48,7 +48,7 @@ docker stop oracle
 docker start oracle
 ```
 如果不想敲命令行启动oracle，你也可以使用Docker的Dashboard来点点鼠标就可以了。
-![Docker Dashboard](img/dockerdashboard.jpg)
+![Docker Dashboard](snapshot/dockerdashboard.jpg)
 
 **经过如上步骤之后，如果没错误，Oracle就是成功安装了。**
 **因为是使用的Oracle 12 以上版本，所以你需要了解Oracle的Container Database（CDB） 跟 Plugin Database（PDB）的区别。**
