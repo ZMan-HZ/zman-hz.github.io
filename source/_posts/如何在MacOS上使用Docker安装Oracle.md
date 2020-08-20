@@ -12,10 +12,10 @@ tags:
 <!--more-->
 # 1 前期准备工作
 
-由于自己的电脑是Mac，并且在工作中也是一直使用Oracle，但是难受的地方是，商业化做的不错的oracle竟然没有MacOS的安装包。木得办法，兵来将挡，水来土堰，办法总比困难多，想办法解决呀！
+由于自己的电脑是Mac，并且在工作中也是一直使用Oracle，但是难受的地方是，商业化做的不错的oracle竟然没有MacOS的安装包。兵来将挡，水来土堰，办法总比困难多，想办法解决呀！
 
 ## Step 1.1 clone/下载Oracle的Docker镜像
-主要是需要oracke的Dockerfile， get docker images here:
+主要是需要oracle的Dockerfile， get docker images here:
  https://github.com/oracle/docker-images
  下载完成后，进入你刚刚下载完成的路径中，如下代码：
  ```bash
@@ -48,7 +48,7 @@ docker stop oracle
 docker start oracle
 ```
 如果不想敲命令行启动oracle，你也可以使用Docker的Dashboard来点点鼠标就可以了。
-![Docker Dashboard](snapshot/dockerdashboard.jpg)
+![Docker Dashboard](dockerdashboard.jpg)
 
 **经过如上步骤之后，如果没错误，Oracle就是成功安装了。**
 **因为是使用的Oracle 12 以上版本，所以你需要了解Oracle的Container Database（CDB） 跟 Plugin Database（PDB）的区别。**

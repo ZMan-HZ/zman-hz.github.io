@@ -27,7 +27,7 @@ site:
   site_verification:
 #    google:
 #    baidu:
-#  google_analytics:
+  google_analytics: G-GV9V3WK361
 #  service_worker:
 
 pagination:
@@ -80,7 +80,7 @@ profile:
   avatar: /images/avatar.jpeg
   #gravatar: manzhzh@163.com # Gravatar email address, if you enable Gravatar, your avatar config will be overriden
   author: Alex Man
-  author_title: Java Devloper & Desiger
+  author_title: Java Developer & Desinger
   author_description: Don't just promise, Prove; Don't just dream, Do!
   location: Hangzhou, China
   follow: https://github.com/zman-hz
@@ -101,7 +101,7 @@ profile:
     Github: https://github.com/zman-hz
     Blog: https://zman-hz.github.io/
     Email: manzhzh@163.com
-    Wechat: ★★★★★
+    Wechat: ★★☆★★
   # My Personal Labels
   labels:
     - 后端
@@ -118,10 +118,10 @@ profile:
     Git: ★★★★★☆
     Java: ★★★★★☆
     Oracel: ★★★★☆
-    Javascript: ★★★☆☆
-    React: ★★★☆☆
-    HTML+CSS: ★★★☆☆
-    Bootstrap: ★★★☆☆
+    Javascript: ★★★☆☆☆
+    React: ★★★☆☆☆
+    HTML+CSS: ★★★☆☆☆
+    Bootstrap: ★★★☆☆☆
    # My Personal Works
   works:
    name:
