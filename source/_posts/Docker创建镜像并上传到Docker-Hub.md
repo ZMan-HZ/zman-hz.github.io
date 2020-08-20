@@ -53,6 +53,6 @@ docker tag #{IMAGE ID} dockerHub用户名/dockerHub仓库名:tag
 ```bash
 docker push dockerHub用户名/dockerHub仓库名:tag标签
 ```
-tag标签便是上一步中打的tag
+tag标签可以是上一步中打的tag
 
 **经过如上步骤，便可以在自己的Docker Hub上看到刚刚push上来的镜像了**
