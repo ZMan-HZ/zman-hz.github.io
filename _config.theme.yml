@@ -136,13 +136,14 @@ profile:
     zman-hz/DevTools: https://github.com/ZMan-HZ/DevTools
 
 widgets:
+#  - board
   - recent_posts
-  - board
   - category
-  - tag
-  - tagcloud
   - archive
-  
+  #- tag
+  - tagcloud
+
+
 
 #widget behaivor
 show_count: true
