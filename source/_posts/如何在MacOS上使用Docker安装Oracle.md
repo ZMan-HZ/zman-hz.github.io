@@ -10,7 +10,7 @@ tags:
 ---
 本篇文章旨在备忘当初是如何在自己的Mac上安装并使用Oracle的。
 <!--more-->
-# 1 前期准备工作
+# 前期准备工作
 
 由于自己的电脑是Mac，并且在工作中也是一直使用Oracle，但是难受的地方是，商业化做的不错的oracle竟然没有MacOS的安装包。兵来将挡，水来土堰，办法总比困难多，想办法解决呀！
 
@@ -26,13 +26,15 @@ tags:
 链接URL： http://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html
 download an oracle database and place it in the equvilent version folder, such as 12.2.0.1, then run below command.
 下载的时候需要有Oracle账户，相信即便没有，申请也很容易。
-下载完成后，把下载的zip包放到**对应版本号**的文件中，比如你下载的是12.2.0.1版本的，然后使用如下命令：
+
+# 开始安装
+下载完成后，把下载的zip包放到 Step1.1 **对应版本号**的文件中，比如你下载的是12.2.0.1版本的，然后使用如下命令：
 ```bash
 ./buildDockerImage.sh -v 12.2.0.1 -e
 ```
 此步骤比较耗时，大概有**21**个步骤要跑。要耐心等待，如果出现链接超时的情况，基本就是第**7**步的时候。强烈建议你早晨早点起床，肯定就能秒过第**7**步，不要问为什么，实践出真知。哈哈哈哈
 
- ## Step 2.1 安装oracle instance并映射Docker中的端口及数据文件到本地端口及本地路径 
+## Step 2.1 安装oracle instance并映射Docker中的端口及数据文件到本地端口及本地路径 
  map to local port and data file
 - 注意修改命令行中的路径(第一个冒号之前的路径)
 ```bash
