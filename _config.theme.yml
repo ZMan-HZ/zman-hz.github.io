@@ -25,8 +25,8 @@ site:
   favicon: /images/favicon.ico
   #manifest:
   site_verification:
-#    google:
-#    baidu:
+   google: sitemap.xml
+   baidu: baidusitemap.xml
   google_analytics: G-GV9V3WK361
 #  service_worker:
 
@@ -124,7 +124,7 @@ profile:
     Bootstrap: ★★★☆☆☆
    # My Personal Works
   works:
-   name:
+   Github:
      link: https://zman-hz.github.io/
      date: since 2016
   # My Personal Projects
@@ -136,12 +136,13 @@ profile:
     zman-hz/DevTools: https://github.com/ZMan-HZ/DevTools
 
 widgets:
-#  - board
+  - recent_posts
+  - board
   - category
   - tag
   - tagcloud
   - archive
-  - recent_posts
+  
 
 #widget behaivor
 show_count: true
