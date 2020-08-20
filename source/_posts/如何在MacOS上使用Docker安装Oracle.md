@@ -14,7 +14,7 @@ tags:
 
 由于自己的电脑是Mac，并且在工作中也是一直使用Oracle，但是难受的地方是，商业化做的不错的oracle竟然没有MacOS的安装包。兵来将挡，水来土堰，办法总比困难多，想办法解决呀！
 
-## Step 1.1 clone/下载Oracle的Docker镜像
+## Step 1 clone/下载Oracle的Docker镜像
 主要是需要oracle的Dockerfile， get docker images here:
  https://github.com/oracle/docker-images
  下载完成后，进入你刚刚下载完成的路径中，如下代码：
@@ -34,7 +34,7 @@ download an oracle database and place it in the equvilent version folder, such a
 ```
 此步骤比较耗时，大概有**21**个步骤要跑。要耐心等待，如果出现链接超时的情况，基本就是第**7**步的时候。强烈建议你早晨早点起床，肯定就能秒过第**7**步，不要问为什么，实践出真知。哈哈哈哈
 
-## Step 2.1 安装oracle instance并映射Docker中的端口及数据文件到本地端口及本地路径 
+## Step 3 安装oracle instance并映射Docker中的端口及数据文件到本地端口及本地路径 
  map to local port and data file
 - 注意修改命令行中的路径(第一个冒号之前的路径)
 ```bash
@@ -94,8 +94,8 @@ Completed:    ALTER PLUGGABLE DATABASE ORCLPDB1 SAVE STATE
 ORCLPDB1(3):Resize operation completed for file# 10, old size 337920K, new size 358400K
 ```
 
-
-## 当然你build好的镜像也是可以push到自己的Docker Hub中，我私人的Docker Hub如下：
+## Build好的Oracle push到远程Docker Hub
+**当然你build好的镜像也是可以push到自己的Docker Hub中，我私人的Docker Hub如下：**
 https://hub.docker.com/repository/docker/zhenzhenman/oracle12
 
 至于如何操作以及Oracle的CDB和PDB，TableSpace等等，请看下回分解。。。
