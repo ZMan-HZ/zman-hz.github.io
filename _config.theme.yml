@@ -71,8 +71,8 @@ postCount:
 search: true # enable local search
 toc: true
 fancybox: true
-license: 
-footer: '本文有任何错误地方或者容易引起误解的地方，请留言斧正!(If there are any errors or misunderstandings in this article, please leave a comment!)'
+license: '本博客初衷是：备忘学习中遇到的问题，及日常笔记作用!(If there are any errors or misunderstandings in this article, please leave a comment!)'
+footer: ''
 #  custom:
 
 profile:
