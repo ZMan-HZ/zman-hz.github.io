@@ -105,9 +105,9 @@ theme: purer
 deploy:
   type: git
   repository: 
-    github: git@github.com:ZMan-HZ/zman-hz.github.io.git
-    coding: git@e.coding.net:zman-hz/blog/blog.git
-  branch: blog
+    github: git@github.com:ZMan-HZ/zman-hz.github.io.git,blog
+    coding: git@e.coding.net:zman-hz/blog/blog.git,blog
+  #branch: blog
   
 markdown:
   html: true
