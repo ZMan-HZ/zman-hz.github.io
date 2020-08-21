@@ -24,6 +24,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+        submodules: true
         
     - name: Setup Hexo Dependencies
       run: |
