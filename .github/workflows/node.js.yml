@@ -24,9 +24,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-        run: |
-          npm install hexo-cli -g
-          npm install
+        
+    - name: Setup Hexo Dependencies
+      run: |
+        npm install hexo-cli -g
+        npm install
+        
     - name: Setup Deploy Private Key
       env:
         HEXO_DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY_KEY }}
