@@ -27,7 +27,7 @@ site:
   site_verification:
    google: sitemap.xml
    baidu: baidusitemap.xml
-  google_analytics: G-GV9V3WK361
+  google_analytics: UA-175995623-1
 #  service_worker:
 
 pagination:
