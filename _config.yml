@@ -104,7 +104,9 @@ theme: purer
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repository: git@github.com:ZMan-HZ/zman-hz.github.io.git
+  repository: 
+    github: git@github.com:ZMan-HZ/zman-hz.github.io.git
+    coding: git@e.coding.net:zman-hz/blog/blog.git
   branch: blog
   
 markdown:
