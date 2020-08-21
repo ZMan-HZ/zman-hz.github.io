@@ -40,8 +40,8 @@ jobs:
 
       - name: Deploy
         run: |
-          hexo clean
-          hexo deploy
+          npm run clean
+          npm run deploy
 
 
 
