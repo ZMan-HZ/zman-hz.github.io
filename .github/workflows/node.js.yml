@@ -40,9 +40,7 @@ jobs:
         git config --global user.email 'manzhzh@163.com'
     - name: Deploy Hexo 
       run: |
-        npm install
-        npm run build
-        npm run deploy
+        hexo g -d
 
 
 
