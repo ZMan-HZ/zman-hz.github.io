@@ -3,20 +3,20 @@
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
-    <title>MacOS如何显示隐藏文件 | Day Day Up</title>
-    <meta name="description" content="MacOS上的隐藏文件都是以.(点)开头的文件夹或者文件，不像windows那样可以通过设置属性来使其隐藏。">
+    <title>Oracle CDB 和PDB，表空间，建表、用户及角色“  | Day Day Up</title>
+    <meta name="description" content="记录在使用了11g以上版本oracle时踩过的坑">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MacOS如何显示隐藏文件">
-<meta property="og:url" content="https://zman-hz.github.io/2020/08/19/MacOS%E5%A6%82%E4%BD%95%E6%98%BE%E7%A4%BA%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6/index.html">
+<meta property="og:title" content="Oracle CDB 和PDB，表空间，建表、用户及角色“ ">
+<meta property="og:url" content="https://zman-hz.github.io/2020/08/25/Oracle-CDB-%E5%92%8CPDB%EF%BC%8C%E8%A1%A8%E7%A9%BA%E9%97%B4%EF%BC%8C%E5%BB%BA%E8%A1%A8%E3%80%81%E7%94%A8%E6%88%B7%E5%8F%8A%E8%A7%92%E8%89%B2/index.html">
 <meta property="og:site_name" content="Day Day Up">
-<meta property="og:description" content="MacOS上的隐藏文件都是以.(点)开头的文件夹或者文件，不像windows那样可以通过设置属性来使其隐藏。">
+<meta property="og:description" content="记录在使用了11g以上版本oracle时踩过的坑">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-08-19T12:26:53.000Z">
-<meta property="article:modified_time" content="2020-08-19T12:32:12.485Z">
+<meta property="article:published_time" content="2020-08-25T13:06:38.000Z">
+<meta property="article:modified_time" content="2020-08-25T13:08:30.027Z">
 <meta property="article:author" content="Alex Man">
-<meta property="article:tag" content="MacOS">
-<meta property="article:tag" content="隐藏文件">
-<meta property="article:tag" content="Hidden File">
+<meta property="article:tag" content="oracle">
+<meta property="article:tag" content="Tablespace">
+<meta property="article:tag" content="schema">
 <meta name="twitter:card" content="summary">
 
     
@@ -213,7 +213,7 @@
             
     
         <h1 class="article-title text-lg" itemprop="name">
-            MacOS如何显示隐藏文件
+            Oracle CDB 和PDB，表空间，建表、用户及角色“ 
         </h1>
     
 
@@ -222,33 +222,33 @@
             <p class="article-meta mb-3 text-xs">
                 <span class="article-date">
     <i class="iconfont icon-calendar-check"></i>
-	<a href="/2020/08/19/MacOS%E5%A6%82%E4%BD%95%E6%98%BE%E7%A4%BA%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6/" class="article-date">
-	  <time datetime="2020-08-19T12:26:53.000Z" itemprop="datePublished">8月 19</time>
+	<a href="/2020/08/25/Oracle-CDB-%E5%92%8CPDB%EF%BC%8C%E8%A1%A8%E7%A9%BA%E9%97%B4%EF%BC%8C%E5%BB%BA%E8%A1%A8%E3%80%81%E7%94%A8%E6%88%B7%E5%8F%8A%E8%A7%92%E8%89%B2/" class="article-date">
+	  <time datetime="2020-08-25T13:06:38.000Z" itemprop="datePublished">8月 25</time>
 	</a>
 </span>
 
                 
     <span class="article-category">
     <i class="iconfont icon-folder"></i>
-    <a class="article-category-link" href="/categories/OS%E6%8A%80%E5%B7%A7/">OS技巧</a>
+    <a class="article-category-link" href="/categories/ORACLE/">ORACLE</a>
   </span>
 
 
                 
     <span class="article-tags">
     <i class="iconfont icon-tag"></i>
-    <a class="article-tag-none-link" href="/tags/Hidden-File/" rel="tag">Hidden File</a>, <a class="article-tag-none-link" href="/tags/MacOS/" rel="tag">MacOS</a>, <a class="article-tag-none-link" href="/tags/%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6/" rel="tag">隐藏文件</a>
+    <a class="article-tag-none-link" href="/tags/Tablespace/" rel="tag">Tablespace</a>, <a class="article-tag-none-link" href="/tags/oracle/" rel="tag">oracle</a>, <a class="article-tag-none-link" href="/tags/schema/" rel="tag">schema</a>
   </span>
 
 
                 <span class="_partial/post-comment"><i class="icon icon-comment"></i>
-                    <a href="/2020/08/19/MacOS%E5%A6%82%E4%BD%95%E6%98%BE%E7%A4%BA%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6/#comments" class="article-comment-link">
+                    <a href="/2020/08/25/Oracle-CDB-%E5%92%8CPDB%EF%BC%8C%E8%A1%A8%E7%A9%BA%E9%97%B4%EF%BC%8C%E5%BB%BA%E8%A1%A8%E3%80%81%E7%94%A8%E6%88%B7%E5%8F%8A%E8%A7%92%E8%89%B2/#comments" class="article-comment-link">
                         评论
                     </a>
                 </span>
                 
     
-        <span class="post-wordcount" itemprop="wordCount">字数统计: 72(字)</span>
+        <span class="post-wordcount" itemprop="wordCount">字数统计: 16(字)</span>
     
     
         <span class="post-readcount" itemprop="timeRequired">阅读时长: 1(分)</span>
@@ -258,16 +258,12 @@
             </p>
         </header>
         <div class="marked-body article-body">
-            <p>MacOS上的隐藏文件都是以.(点)开头的文件夹或者文件，不像windows那样可以通过设置属性来使其隐藏。</p>
+            <p>记录在使用了11g以上版本oracle时踩过的坑</p>
 <a id="more"></a>
-<p>显示隐藏文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.finder AppleShowAllFiles -bool <span class="literal">true</span>;</span><br><span class="line">KillAll Finder</span><br></pre></td></tr></table></figure>
-<p>不显示隐藏文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.finder AppleShowAllFiles -bool <span class="literal">false</span>;</span><br><span class="line">KillAll Finder</span><br></pre></td></tr></table></figure>
         </div>
         
 <blockquote class="copyright">
-    <p><strong>本文链接 : </strong><a class="permalink" href="https://zman-hz.github.io/2020/08/19/MacOS%E5%A6%82%E4%BD%95%E6%98%BE%E7%A4%BA%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6/">https://zman-hz.github.io/2020/08/19/MacOS如何显示隐藏文件/</a></p>
+    <p><strong>本文链接 : </strong><a class="permalink" href="https://zman-hz.github.io/2020/08/25/Oracle-CDB-%E5%92%8CPDB%EF%BC%8C%E8%A1%A8%E7%A9%BA%E9%97%B4%EF%BC%8C%E5%BB%BA%E8%A1%A8%E3%80%81%E7%94%A8%E6%88%B7%E5%8F%8A%E8%A7%92%E8%89%B2/">https://zman-hz.github.io/2020/08/25/Oracle-CDB-和PDB，表空间，建表、用户及角色/</a></p>
     <p><strong>本博客初衷是：备忘学习中遇到的问题，及日常笔记作用!(If there are any errors or misunderstandings in this article, please leave a comment!)</strong></p>
 </blockquote>
 
