@@ -7,6 +7,7 @@ tags:
 - ORACLE
 - TABLESPACE
 - SCHEMA
+- ROLE
 ---
 记录在使用了11g以上版本oracle时踩过的坑
 <!--more-->
