@@ -1,5 +1,5 @@
 ---
-title: 'Oracle CDB 和PDB，表空间，建表、用户及角色“ '
+title: 'Oracle CDB 和PDB，表空间，建表、用户及角色'
 date: 2020-08-25 21:06:38
 comment: true
 categories: ORACLE
