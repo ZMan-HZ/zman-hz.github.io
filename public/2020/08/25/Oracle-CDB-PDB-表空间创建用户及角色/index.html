@@ -11,14 +11,20 @@
 <meta property="og:site_name" content="Day Day Up">
 <meta property="og:description" content="记录在使用了11g以上版本oracle时踩过的坑">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zman-hz.github.io/2020/08/25/Oracle-CDB-PDB-%E8%A1%A8%E7%A9%BA%E9%97%B4%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%8F%8A%E8%A7%92%E8%89%B2/oracle.jpg">
+<meta property="og:image" content="https://zman-hz.github.io/2020/08/25/Oracle-CDB-PDB-%E8%A1%A8%E7%A9%BA%E9%97%B4%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%8F%8A%E8%A7%92%E8%89%B2/pdbs.png">
+<meta property="og:image" content="https://zman-hz.github.io/2020/08/25/Oracle-CDB-PDB-%E8%A1%A8%E7%A9%BA%E9%97%B4%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%8F%8A%E8%A7%92%E8%89%B2/sqldeveloperoverview.png">
+<meta property="og:image" content="https://zman-hz.github.io/2020/08/25/Oracle-CDB-PDB-%E8%A1%A8%E7%A9%BA%E9%97%B4%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%8F%8A%E8%A7%92%E8%89%B2/cdbconfig.png">
+<meta property="og:image" content="https://zman-hz.github.io/2020/08/25/Oracle-CDB-PDB-%E8%A1%A8%E7%A9%BA%E9%97%B4%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%8F%8A%E8%A7%92%E8%89%B2/pdbconfig.png">
 <meta property="article:published_time" content="2020-08-25T13:39:31.000Z">
-<meta property="article:modified_time" content="2020-08-29T12:39:37.127Z">
+<meta property="article:modified_time" content="2020-08-29T13:30:57.520Z">
 <meta property="article:author" content="Alex Man">
 <meta property="article:tag" content="ORACLE">
 <meta property="article:tag" content="TABLESPACE">
 <meta property="article:tag" content="SCHEMA">
 <meta property="article:tag" content="ROLE">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zman-hz.github.io/2020/08/25/Oracle-CDB-PDB-%E8%A1%A8%E7%A9%BA%E9%97%B4%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%8F%8A%E8%A7%92%E8%89%B2/oracle.jpg">
 
     
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon"><meta name="google-site-verification" content="sitemap.xml"><meta name="baidu-site-verification" content="baidusitemap.xml">
@@ -249,10 +255,10 @@
                 </span>
                 
     
-        <span class="post-wordcount" itemprop="wordCount">字数统计: 720(字)</span>
+        <span class="post-wordcount" itemprop="wordCount">字数统计: 1.5k(字)</span>
     
     
-        <span class="post-readcount" itemprop="timeRequired">阅读时长: 4(分)</span>
+        <span class="post-readcount" itemprop="timeRequired">阅读时长: 7(分)</span>
     
 
 
@@ -261,6 +267,7 @@
         <div class="marked-body article-body">
             <p>记录在使用了11g以上版本oracle时踩过的坑</p>
 <a id="more"></a>
+<p><strong>在进行如下操作之前，需保证Docker在running，然后启动ORACLE</strong></p>
 <h1 id="登录ORACLE">登录ORACLE</h1>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container ls</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it 3024386a1d24 /bin/bash</span><br></pre></td></tr></table></figure>
@@ -268,6 +275,43 @@
 <h1 id="修改Sys-System的密码">修改Sys/System的密码</h1>
 <p>修改密码是便于自己使用跟设置SqlDeveloper，使用JDBC</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">USER</span> <span class="keyword">sys</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> YOURPASSWORD</span><br></pre></td></tr></table></figure>
+<h1 id="预备知识">预备知识</h1>
+<p>需要知道CDB跟PDB是怎么回事，Oracle 12C引入了CDB与PDB的新特性，在ORACLE 12C数据库引入的多租用户环境（Multitenant Environment）中，允许一个数据库容器（CDB）承载多个可插拔数据库（PDB）。CDB全称为Container Database，中文翻译为数据库容器，PDB全称为Pluggable Database，即可插拔数据库。在ORACLE 12C之前，实例与数据库是一对一或多对一关系（RAC）：即一个实例只能与一个数据库相关联，数据库可以被多个实例所加载。而实例与数据库不可能是一对多的关系。当进入ORACLE 12C后，实例与数据库可以是一对多的关系。下面是官方文档关于CDB与PDB的关系图<br>
+<img src="oracle.jpg" alt="ORACLE"></p>
+<p>其实大家如果对SQL SERVER比较熟悉的话，这种CDB与PDB是不是感觉和SQL SERVER的单实例多数据库架构是一回事呢。像PDB$SEED可以看成是master、msdb等系统数据库，PDBS可以看成用户创建的数据库。而可插拔的概念与SQL SERVER中的用户数据库的分离、附加其实就是那么一回事。看来ORACLE也“抄袭”了一把SQL SERVER的概念，只是改头换面的包装了一番。</p>
+<h2 id="CDB组件（Components-of-a-CDB）">CDB组件（Components of a CDB）</h2>
+<p>一个CDB数据库容器包含了下面一些组件：<br>
+<strong>ROOT组件：</strong><br>
+ROOT又叫CDB$ROOT, 存储着ORACLE提供的元数据和Common User,元数据的一个例子是ORACLE提供的PL/SQL包的源代码，Common User 是指在每个容器中都存在的用户。</p>
+<p><strong>SEED组件：</strong><br>
+Seed又叫PDB$SEED,这个是你创建PDBS数据库的模板，你不能在Seed中添加或修改一个对象。一个CDB中有且只能有一个Seed. 这个感念，个人感觉非常类似SQL SERVER中的model数据库。</p>
+<p><strong>PDBS：</strong><br>
+CDB中可以有一个或多个PDBS，PDBS向后兼容，可以像以前在数据库中那样操作PDBS，这里指大多数常规操作。<br>
+这些组件中的每一个都可以被称为一个容器。因此，ROOT(根)是一个容器，Seed(种子)是一个容器，每个PDB是一个容器。每个容器在CDB中都有一个独一无二的的ID和名称。</p>
+<h3 id="查看当前容器">查看当前容器</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sql&gt; SHOW CON_NAME;</span><br><span class="line"></span><br><span class="line">CON_NAME </span><br><span class="line"><span class="comment">------------------------------</span></span><br><span class="line">CDB$ROOT</span><br></pre></td></tr></table></figure>
+<h3 id="查看CDB中可用的PDB">查看CDB中可用的PDB</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sql&gt; SELECT</span><br><span class="line">    CON_ID,DBID,NAME,OPEN_MODE</span><br><span class="line">FROM</span><br><span class="line">    V$PDBS;</span><br></pre></td></tr></table></figure>
+<p><img src="pdbs.png" alt="PDBS"></p>
+<h2 id="切换至PDB">切换至PDB</h2>
+<p>因为sql开发是需要在PDB上进行，所以需要切换至PDB中，只写两种方式，其中<strong>方式1</strong>是笔者常用<br>
+方式1:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">SESSION</span> <span class="keyword">SET</span> <span class="keyword">CONTAINER</span> = ORCLPDB1;</span><br></pre></td></tr></table></figure>
+<p>方式2:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">pluggable</span> <span class="keyword">database</span> ORCLPDB1 <span class="keyword">open</span>;;</span><br></pre></td></tr></table></figure>
+<h1 id="使用SqlDeveloper-方便写sql开发">使用SqlDeveloper 方便写sql开发</h1>
+<h2 id="配置SqlDeveloper">配置SqlDeveloper</h2>
+<p>为了区分，建议按DB类型进行分开, cdb的用户名跟密码是可以登录pdb的，下面都可以使用前面设置好的sys的用户名，当然你也可以只登录到CDB，然后使用上面的切换方式<br>
+<img src="sqldeveloperoverview.png" alt="SQLDEVELOPER"></p>
+<h3 id="使用Basic类型配置CDB">使用Basic类型配置CDB</h3>
+<p><strong>注意正确选择Role</strong></p>
+<p><img src="cdbconfig.png" alt="CDB Config"><br>
+注：图中的<strong>Service name/SID（当前是一样的）</strong> 就是你在上面命令行中export的<strong>ORACLE_SID</strong></p>
+<h3 id="使用Basic类型配置PDB">使用Basic类型配置PDB</h3>
+<p><img src="pdbconfig.png" alt="PDB Config"><br>
+JDBC URL:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdbc:oracle:thin:@localhost:1521/orclpdb1</span><br></pre></td></tr></table></figure>
+
         </div>
         
 <blockquote class="copyright">
@@ -294,7 +338,7 @@
     <div class="toc-sidebar">
         <nav id="toc" class="article-toc">
             <h3 class="toc-title">文章目录</h3>
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%99%BB%E5%BD%95ORACLE"><span class="toc-number">1.</span> <span class="toc-text">登录ORACLE</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9Sys-System%E7%9A%84%E5%AF%86%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">修改Sys&#x2F;System的密码</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%99%BB%E5%BD%95ORACLE"><span class="toc-number">1.</span> <span class="toc-text">登录ORACLE</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9Sys-System%E7%9A%84%E5%AF%86%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">修改Sys&#x2F;System的密码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="toc-number">3.</span> <span class="toc-text">预备知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CDB%E7%BB%84%E4%BB%B6%EF%BC%88Components-of-a-CDB%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">CDB组件（Components of a CDB）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E5%AE%B9%E5%99%A8"><span class="toc-number">3.1.1.</span> <span class="toc-text">查看当前容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8BCDB%E4%B8%AD%E5%8F%AF%E7%94%A8%E7%9A%84PDB"><span class="toc-number">3.1.2.</span> <span class="toc-text">查看CDB中可用的PDB</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E8%87%B3PDB"><span class="toc-number">3.2.</span> <span class="toc-text">切换至PDB</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8SqlDeveloper-%E6%96%B9%E4%BE%BF%E5%86%99sql%E5%BC%80%E5%8F%91"><span class="toc-number">4.</span> <span class="toc-text">使用SqlDeveloper 方便写sql开发</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AESqlDeveloper"><span class="toc-number">4.1.</span> <span class="toc-text">配置SqlDeveloper</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Basic%E7%B1%BB%E5%9E%8B%E9%85%8D%E7%BD%AECDB"><span class="toc-number">4.1.1.</span> <span class="toc-text">使用Basic类型配置CDB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Basic%E7%B1%BB%E5%9E%8B%E9%85%8D%E7%BD%AEPDB"><span class="toc-number">4.1.2.</span> <span class="toc-text">使用Basic类型配置PDB</span></a></li></ol></li></ol></li></ol>
         </nav>
     </div>
 </aside>

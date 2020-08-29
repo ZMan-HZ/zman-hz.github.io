@@ -11,6 +11,9 @@ tags:
 ---
 记录在使用了11g以上版本oracle时踩过的坑
 <!--more-->
+
+**在进行如下操作之前，需保证Docker在running，然后启动ORACLE**
+
 # 登录ORACLE
 ``` bash
 docker container ls
@@ -106,7 +109,7 @@ oracle     464   412  0 12:32 pts/0    00:00:00 grep --color=auto ora_
 ALTER USER sys IDENTIFIED BY YOURPASSWORD
 ```
 
-# 在正式使用ORACLE之前
+# 预备知识
 需要知道CDB跟PDB是怎么回事，Oracle 12C引入了CDB与PDB的新特性，在ORACLE 12C数据库引入的多租用户环境（Multitenant Environment）中，允许一个数据库容器（CDB）承载多个可插拔数据库（PDB）。CDB全称为Container Database，中文翻译为数据库容器，PDB全称为Pluggable Database，即可插拔数据库。在ORACLE 12C之前，实例与数据库是一对一或多对一关系（RAC）：即一个实例只能与一个数据库相关联，数据库可以被多个实例所加载。而实例与数据库不可能是一对多的关系。当进入ORACLE 12C后，实例与数据库可以是一对多的关系。下面是官方文档关于CDB与PDB的关系图
  ![ORACLE](oracle.jpg)
 
@@ -114,11 +117,13 @@ ALTER USER sys IDENTIFIED BY YOURPASSWORD
 
 ## CDB组件（Components of a CDB）
 一个CDB数据库容器包含了下面一些组件：
-ROOT组件
-ROOT又叫CDB$ROOT, 存储着ORACLE提供的元数据和Common User,元数据的一个例子是ORACLE提供的PL/SQL包的源代码，Common User 是指在每个容器中都存在的用户。
-SEED组件
-  Seed又叫PDB$SEED,这个是你创建PDBS数据库的模板，你不能在Seed中添加或修改一个对象。一个CDB中有且只能有一个Seed. 这个感念，个人感觉非常类似SQL SERVER中的model数据库。
-PDBS
+**ROOT组件：**
+    ROOT又叫CDB$ROOT, 存储着ORACLE提供的元数据和Common User,元数据的一个例子是ORACLE提供的PL/SQL包的源代码，Common User 是指在每个容器中都存在的用户。
+
+**SEED组件：**
+    Seed又叫PDB$SEED,这个是你创建PDBS数据库的模板，你不能在Seed中添加或修改一个对象。一个CDB中有且只能有一个Seed. 这个感念，个人感觉非常类似SQL SERVER中的model数据库。
+
+**PDBS：**
     CDB中可以有一个或多个PDBS，PDBS向后兼容，可以像以前在数据库中那样操作PDBS，这里指大多数常规操作。
 这些组件中的每一个都可以被称为一个容器。因此，ROOT(根)是一个容器，Seed(种子)是一个容器，每个PDB是一个容器。每个容器在CDB中都有一个独一无二的的ID和名称。
 
@@ -155,8 +160,10 @@ alter pluggable database ORCLPDB1 open;;
 为了区分，建议按DB类型进行分开, cdb的用户名跟密码是可以登录pdb的，下面都可以使用前面设置好的sys的用户名，当然你也可以只登录到CDB，然后使用上面的切换方式
  ![SQLDEVELOPER](sqldeveloperoverview.png)
 ### 使用Basic类型配置CDB
+**注意正确选择Role**
+
 ![CDB Config](cdbconfig.png)
-注：图中的**Service name/SID（当前是一样的）** 就是你在上面命令行中export的**ORACLE_SIDs**
+注：图中的**Service name/SID（当前是一样的）** 就是你在上面命令行中export的**ORACLE_SID**
 ### 使用Basic类型配置PDB
 ![PDB Config](pdbconfig.png)
 JDBC URL:
