@@ -32,7 +32,7 @@ download an oracle database and place it in the equvilent version folder, such a
 ```bash
 ./buildDockerImage.sh -v 12.2.0.1 -e
 ```
-此步骤比较耗时，大概有**21**个步骤要跑。要耐心等待，如果出现链接超时的情况，基本就是第**7**步的时候。强烈建议你早晨早点起床，肯定就能秒过第**7**步，不要问为什么，实践出真知。哈哈哈哈
+此步骤比较耗时，大概有**24**个步骤要跑。要耐心等待，如果出现链接超时的情况，基本就是第**7/10**步的时候。强烈建议你早晨早点起床，肯定就能秒过，不要问为什么，实践出真知。哈哈哈哈
 
 ## Step 3 安装oracle instance并映射Docker中的端口及数据文件到本地端口及本地路径 
  map to local port and data file
@@ -53,7 +53,7 @@ docker start oracle
 ![Docker Dashboard](dockerdashboard.jpg)
 
 **经过如上步骤之后，如果没错误，Oracle就是成功安装了。**
-**因为是使用的Oracle 12 以上版本，所以你需要了解Oracle的Container Database（CDB） 跟 Plugin Database（PDB）的区别。**
+**因为是使用的Oracle 12 以上版本，所以你需要了解Oracle的Container Database（CDB） 跟 Plugable Database（PDB）的区别。**
 
 参考log如下：
 ```bash
