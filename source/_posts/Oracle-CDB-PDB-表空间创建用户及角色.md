@@ -166,6 +166,8 @@ alter pluggable database ORCLPDB1 open;;
 注：图中的**Service name/SID（当前是一样的）** 就是你在上面命令行中export的**ORACLE_SID**
 ### 使用Basic类型配置PDB
 ![PDB Config](pdbconfig.png)
+### 使用JDBC配置PDB/CDB
+**只需要把上图中的Connection Type改成Advanced**
 JDBC URL:
 ```bash
 jdbc:oracle:thin:@localhost:1521/orclpdb1
