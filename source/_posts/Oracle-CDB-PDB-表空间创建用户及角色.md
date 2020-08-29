@@ -9,7 +9,7 @@ tags:
 - SCHEMA
 - ROLE
 ---
-记录在使用了11g以上版本oracle时踩过的坑
+记录如何使用11g以上版本oracle
 <!--more-->
 
 **在进行如下操作之前，需保证Docker在running，然后启动ORACLE**
