@@ -173,5 +173,50 @@ JDBC URL:
 jdbc:oracle:thin:@localhost:1521/orclpdb1
 ```
 ## 使用Sql Developer进行开发
-### 创建TableSpace
+### 创建TableSpace 
+数据文件和日志文件是数据库中最关键的文件。它们是数据存储的地方。每一个数据库至少有一个与之相关的数据文件，通常情况下不仅仅一个，有非常多。数据在数据文件里是怎样组织的？
+表空间就是一个用于管理数据文件的逻辑容器，它是与数据文件相关联的，一个表空间至少要有一个数据文件与之关联。
+与user和schema相比，tablespace是一个相对更加底层的概念，可以通过create tablespace创建表空间。
+创建名为Developer的table space：
+```sql
+CREATE TABLESPACE DEVELOPER DATAFILE
+    '/opt/oracle/product/12.2.0.1/dbhome_1/dbs/DEVELOPER.dbf' SIZE 4 G
+        AUTOEXTEND ON NEXT 200 M
+LOGGING EXTENT MANAGEMENT LOCAL AUTOALLOCATE;
+```
+当然如果使用**Navicat**的话就不需要写这个sql了。
+
+### Schema
+Oracle中的schema是若干个数据库对象的集合，用于管理数据库中的各种对象，这里的对象包括：表（table）、视图(View)、存储过程(Stored Procedure)、序列(Sequence)、索引(Index)等等。一个schema下包括若干个表、视图、存储过程等对象。
+其实，一个tablespace创建出来之后，就存在一个同名的schema。当然一个表空间上可以存在多个schema。
+
+### 常见User，及Role。
+创建用户需要指定tablespace，可理解成在哪个数据库使用这个user
+```sql
+CREATE USER username IDENTIFIED BY password DEFAULT TABLESPACE DEVELOPER TEMPORARY TABLESPACE TEMP;
+```
+创建Role，主要作用就是权限管理，不同的role的grant不同的权限，不同的role可以grant给user，便可以实现不同权限管理的功能。比如，创建一个Read-only的role，可以赋给普通用户，只能查询，不能update数据，场景可以是对production的数据赋予read-only权限，很容易理解production都是真实的生产数据，不能随意更改，只能查询。
+```sql
+--create role
+CREATE ROLE DEVELOPER_ROLE;
+
+-- availible PRIVILEGE
+SELECT  * FROM  SYS.ROLE_SYS_PRIVS；
+
+-- grant role
+GRANT 
+     CREATE ANY TABLE, CREATE ANY SEQUENCE, CREATE PROCEDURE, CREATE ANY TYPE, SELECT ANY TABLE,SELECT ANY SEQUENCE, UPDATE ANY TABLE, INSERT ANY TABLE 
+TO DEVELOPER_ROLE;
+
+--grant role to user
+GRANT DEVELOPER_ROLE TO DEVELOPER;
+SET ROLE DEVELOPER_ROLE;
+
+--设置默认的role
+ALTER USER DEVELOPER DEFAULT ROLE DEVELOPER_ROLE;
+
+--如需要可以回收权限 from user
+revoke CREATE PROCEDURE from DEVELOPER;
+```
+可以从可用的权限中选择不同的privilege赋给role，然后把role再赋给user，此时user便有了赋予的权限，也不再需要一个一个的role赋给user。user可以拥有多个role，如需要可设置default的role。
 
