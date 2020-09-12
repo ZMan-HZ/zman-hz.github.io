@@ -190,7 +190,7 @@ LOGGING EXTENT MANAGEMENT LOCAL AUTOALLOCATE;
 Oracle中的schema是若干个数据库对象的集合，用于管理数据库中的各种对象，这里的对象包括：表（table）、视图(View)、存储过程(Stored Procedure)、序列(Sequence)、索引(Index)等等。一个schema下包括若干个表、视图、存储过程等对象。
 其实，一个tablespace创建出来之后，就存在一个同名的schema。当然一个表空间上可以存在多个schema。
 
-### 常见User，及Role。
+### 创建User，及Role。
 创建用户需要指定tablespace，可理解成在哪个数据库使用这个user
 ```sql
 CREATE USER username IDENTIFIED BY password DEFAULT TABLESPACE DEVELOPER TEMPORARY TABLESPACE TEMP;
