@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html  lang="zh-CN" >
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>About | Day Day Up</title>
+    <meta name="description" content="关于我&#x2F;About Me Everything you’ve ever done was done by a younger, more hopeful you who you no longer are; Everything you aspire to do needs to be done by an older, more experienced you who you are not y">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About">
+<meta property="og:url" content="https://zman-hz.github.io/about/index.html">
+<meta property="og:site_name" content="Day Day Up">
+<meta property="og:description" content="关于我&#x2F;About Me Everything you’ve ever done was done by a younger, more hopeful you who you no longer are; Everything you aspire to do needs to be done by an older, more experienced you who you are not y">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-18T02:18:30.000Z">
+<meta property="article:modified_time" content="2020-09-12T03:50:41.076Z">
+<meta property="article:author" content="Alex Man">
+<meta property="article:tag" content="Java, 后端, 笔记">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon"><meta name="google-site-verification" content="sitemap.xml"><meta name="baidu-site-verification" content="baidusitemap.xml">
+
+    
+<link rel="stylesheet" href="/css/common.min.css">
+
+
+
+    
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css" rel="stylesheet">
+    
+    
+        <link href="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/css/lightgallery.min.css" rel="stylesheet">
+    
+    
+    
+<link rel="stylesheet" href="/css/iconfont.min.css">
+
+    
+    <script>
+        (function(e,t,n,i,s,a,c){e[n]=e[n]||function(){(e[n].q=e[n].q||[]).push(arguments)}
+        ;a=t.createElement(i);c=t.getElementsByTagName(i)[0];a.async=true;a.src=s
+        ;c.parentNode.insertBefore(a,c)
+        })(window,document,"galite","script","https://cdn.jsdelivr.net/npm/ga-lite@2/dist/ga-lite.min.js");
+
+        galite('create', 'UA-175995623-1', 'auto');
+        galite('send', 'pageview');
+    </script>
+    
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+    <body>
+        <header class="header header-fixture">
+    <div class="profile-search-wrap flex sm:block">
+        
+        
+        <div class="profile sm:text-center md:px-1 lg:px-3 sm:pb-4 sm:pt-6">
+            <a id="avatar" role="link" href="https://github.com/zman-hz" class="inline-block lg:w-16 lg:h-16 w-8 h-8 m-2" target="_blank" rel="noopener" rel="noreferrer" >
+                <img src="/images/avatar.jpeg" class="rounded-full" alt="avatar">
+            </a>
+            <h2 id="name" class="hidden lg:block">Alex Man</h2>
+            <h3 id="title" class="hidden xl:block">Java Developer &amp; Desinger</h3>
+            
+            <small id="location" class="hidden lg:block">
+                <i class="iconfont icon-map-icon"></i>
+                Hangzhou, China
+            </small>
+            
+        </div>
+        
+        
+<div class="search flex-1 flex lg:inline-block sm:hidden lg:px-4 lg:mt-2 lg:mb-4 lg:w-full">
+    <form id="search-form" class="my-auto flex-1 lg:border lg:border-solid lg:border-gray-200">
+        <div class="input-group table bg-gray-100 lg:bg-white w-full">
+            <input id="search-input" type="text" placeholder="搜索" class="inline-block w-full bg-gray-100 lg:bg-white">
+            <span class="table-cell">
+                <button name="search tigger button" disabled>
+                    <i class="iconfont icon-search m-2"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+        
+<script id="search-teamplate" type="text/html" data-path="/content.json">
+    <div>
+        <div class="search-header bg-gray-400">
+            <input id="actual-search-input" model="keyword" ref="input" class="inline-block w-full h-10 px-2 py-1" placeholder="搜索" type="text">
+        </div>
+        <div class="search-result bg-gray-200">
+            {{#each searchPosts}}
+            <a href="/{{ path }}" class="result-item block px-2 pb-3 mb-1 pt-1 hover:bg-indigo-100">
+                <i class="iconfont icon-file"></i>
+                <h1 class="result-title inline font-medium text-lg">{{ title }}</h1>
+                <p class="result-content text-gray-600 text-sm">{{{ text }}}</p>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+</div>
+
+
+        <button name="menu toogle button" id="menu-toggle-btn" class="block sm:hidden p-3" role="button" aria-expanded="false">
+            <i class="iconfont icon-hamburger"></i>
+        </button>
+    </div>
+    <nav id="menu-nav" class="hidden sm:flex flex-col">
+        
+        
+            <div class="menu-item menu-home" role="menuitem">
+                <a href="/.">
+                    <i class="iconfont icon-home" aria-hidden="true"></i>
+                    <span class="menu-title">首页</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-archives" role="menuitem">
+                <a href="/archives">
+                    <i class="iconfont icon-archive" aria-hidden="true"></i>
+                    <span class="menu-title">归档</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-categories" role="menuitem">
+                <a href="/categories">
+                    <i class="iconfont icon-folder" aria-hidden="true"></i>
+                    <span class="menu-title">分类</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-tags" role="menuitem">
+                <a href="/tags">
+                    <i class="iconfont icon-tag" aria-hidden="true"></i>
+                    <span class="menu-title">标签</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-repository" role="menuitem">
+                <a href="/repository">
+                    <i class="iconfont icon-project" aria-hidden="true"></i>
+                    <span class="menu-title">项目</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-links" role="menuitem">
+                <a href="/links">
+                    <i class="iconfont icon-friend" aria-hidden="true"></i>
+                    <span class="menu-title">友链</span>
+                </a>
+            </div>
+        
+        
+            <div class="menu-item menu-about" role="menuitem">
+                <a href="/about">
+                    <i class="iconfont icon-cup" aria-hidden="true"></i>
+                    <span class="menu-title">关于</span>
+                </a>
+            </div>
+        
+        
+<div class="social-links flex sm:flex-col lg:hidden mt-5">
+    
+        <span class="social-item text-center">
+            <a target="_blank" rel="noopener" href="https://github.com/zman-hz">
+                <i class="iconfont social-icon icon-github"></i>
+                <span class="menu-title hidden lg:inline">menu.github</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/null">
+                <i class="iconfont social-icon icon-telegram"></i>
+                <span class="menu-title hidden lg:inline">menu.telegram</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/null">
+                <i class="iconfont social-icon icon-twitter"></i>
+                <span class="menu-title hidden lg:inline">menu.twitter</span>
+            </a>
+        </span>
+    
+        <span class="social-item text-center">
+            <a href="/atom.xml">
+                <i class="iconfont social-icon icon-rss"></i>
+                <span class="menu-title hidden lg:inline">menu.rss</span>
+            </a>
+        </span>
+    
+</div>
+
+
+    </nav>
+</header>
+
+        <section class="main-section">
+            
+    <main class="flex-1 px-4 py-12 md:px-5 lg:px-8 lg:py-4 relative min-h-screen">
+    
+
+    <article class="content article article-archives article-type-list" itemscope="">
+        <header class="article-header">
+            
+    
+        <h1 class="article-title text-lg" itemprop="name">
+            About
+        </h1>
+    
+
+
+
+            <p class="article-meta mb-3 text-xs">
+                <span class="article-date">
+    <i class="iconfont icon-calendar-check"></i>
+	<a href="/about/index.html" class="article-date">
+	  <time datetime="2020-08-18T02:18:30.000Z" itemprop="datePublished">8月 18</time>
+	</a>
+</span>
+
+                
+
+                
+
+                <span class="_partial/post-comment"><i class="icon icon-comment"></i>
+                    <a href="/about/index.html#comments" class="article-comment-link">
+                        评论
+                    </a>
+                </span>
+                
+    
+        <span class="post-wordcount" itemprop="wordCount">字数统计: 115(字)</span>
+    
+    
+        <span class="post-readcount" itemprop="timeRequired">阅读时长: 1(分)</span>
+    
+
+
+            </p>
+        </header>
+        <div class="marked-body article-body">
+            <h1 id="关于我-About-Me">关于我/About Me</h1>
+<p>Everything you’ve ever done was done by a younger, more hopeful you who you no longer are;<br>
+Everything you aspire to do needs to be done by an older, more experienced you who you are not yet!</p>
+<p>Story could be easier say it verbally than write it out!</p>
+<p>Do not just promise, Prove; Do not jsut dream, Do!</p>
+<p>Be prepared for more, be successful in all.</p>
+<p>如果加载比较慢，可以尝试如下链接：<br>
+<a target="_blank" rel="noopener" href="https://1qh40q.coding-pages.com">https://1qh40q.coding-pages.com</a></p>
+<p>本博客初衷是：备忘学习中遇到的问题，及日常笔记作用。</p>
+
+        </div>
+        
+<blockquote class="copyright">
+    <p><strong>本文链接 : </strong><a class="permalink" href="https://zman-hz.github.io/about/index.html">https://zman-hz.github.io/about/index.html</a></p>
+    <p><strong>本博客初衷是：备忘学习中遇到的问题，及日常笔记作用!(If there are any errors or misunderstandings in this article, please leave a comment!)</strong></p>
+</blockquote>
+
+
+    </article>
+    
+    <section id="comments">
+        
+
+        
+    </section>
+
+
+    
+
+</main>
+
+<aside class="aside aside-fixture" itemscope itemtype="http://schema.org/WPSideBar">
+    <div class="widgets">
+        
+            <div class="widget links-widget">
+                <h3 class="widget-title">个人链接</h3>
+                <div class="widget-body">
+                    <ul class="link-list">
+                        
+                            <li>
+                                Github:
+                                
+                                    <a href="https://github.com/zman-hz" target="_blank">https://github.com/zman-hz</a>
+                                
+                            </li>
+                        
+                            <li>
+                                Blog:
+                                
+                                    <a href="https://zman-hz.github.io/" target="_blank">https://zman-hz.github.io/</a>
+                                
+                            </li>
+                        
+                            <li>
+                                Email:
+                                
+                                    <a>manzhzh@163.com</a>
+                                
+                            </li>
+                        
+                            <li>
+                                Wechat:
+                                
+                                    <a>★★☆★★</a>
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        
+            <div class="widget skills-widget">
+                <h3 class="widget-title">技能</h3>
+                <div class="widget-body">
+                    <ul class="skill-list">
+                        
+                                <div class="skill-item flex justify-between">
+                                    <span>Git</span>
+                                    <span class="pull-right">★★★★★☆</span>
+                                </div>
+                        
+                                <div class="skill-item flex justify-between">
+                                    <span>Java</span>
+                                    <span class="pull-right">★★★★★☆</span>
+                                </div>
+                        
+                                <div class="skill-item flex justify-between">
+                                    <span>Oracel</span>
+                                    <span class="pull-right">★★★★☆☆</span>
+                                </div>
+                        
+                                <div class="skill-item flex justify-between">
+                                    <span>Javascript</span>
+                                    <span class="pull-right">★★★☆☆☆</span>
+                                </div>
+                        
+                                <div class="skill-item flex justify-between">
+                                    <span>React</span>
+                                    <span class="pull-right">★★★☆☆☆</span>
+                                </div>
+                        
+                                <div class="skill-item flex justify-between">
+                                    <span>HTML+CSS</span>
+                                    <span class="pull-right">★★★☆☆☆</span>
+                                </div>
+                        
+                                <div class="skill-item flex justify-between">
+                                    <span>Bootstrap</span>
+                                    <span class="pull-right">★★★☆☆☆</span>
+                                </div>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        
+            <div class="widget labels-widget">
+                <h3 class="widget-title">个人标签</h3>
+                <div class="widget-body">
+                    
+                        <span class="label label-default mb">后端</span>
+                    
+                        <span class="label label-default mb">Java</span>
+                    
+                        <span class="label label-default mb">Oracle</span>
+                    
+                        <span class="label label-default mb">Spring</span>
+                    
+                        <span class="label label-default mb">前端</span>
+                    
+                        <span class="label label-default mb">JavaScript</span>
+                    
+                        <span class="label label-default mb">React</span>
+                    
+                        <span class="label label-default mb">Vue</span>
+                    
+                        <span class="label label-default mb">Node.js</span>
+                    
+                        <span class="label label-default mb">MacOs</span>
+                    
+                </div>
+            </div>
+        
+        
+            <div class="widget works-widget">
+                <h3 class="widget-title">个人作品</h3>
+                <div class="widget-body">
+                    <ul class="work-list">
+                        
+                        <a href="https://zman-hz.github.io/" target="_blank" title="Github">
+                            <div class="work-item flex justify-between">
+                                <span>Github</span>
+                                <span class="pull-right text-muted">since 2016</span>
+                            </div>
+                        </a>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        
+            <div class="widget projects-widget">
+                <h3 class="widget-title">个人项目</h3>
+                <div class="widget-body">
+                    <ul class="project-list">
+                        
+                            <li class="public source">
+                                <a href="https://github.com/ZMan-HZ/codedemo" target="_blank" title="zman-hz/codedemo">
+                                    <span class="repo-icon octicon octicon-repo"></span>
+                                    <span class="repo-and-owner css-truncate-target">zman-hz/codedemo</span>
+                                </a>
+                            </li>
+                        
+                            <li class="public source">
+                                <a href="https://github.com/ZMan-HZ/springbootdemos" target="_blank" title="zman-hz/springbootdemos">
+                                    <span class="repo-icon octicon octicon-repo"></span>
+                                    <span class="repo-and-owner css-truncate-target">zman-hz/springbootdemos</span>
+                                </a>
+                            </li>
+                        
+                            <li class="public source">
+                                <a href="https://github.com/ZMan-HZ/OracleOnMacOS" target="_blank" title="zman-hz/OracleOnMacOS">
+                                    <span class="repo-icon octicon octicon-repo"></span>
+                                    <span class="repo-and-owner css-truncate-target">zman-hz/OracleOnMacOS</span>
+                                </a>
+                            </li>
+                        
+                            <li class="public source">
+                                <a href="https://github.com/ZMan-HZ/springboot-dubbo" target="_blank" title="zman-hz/springboot-dubbo">
+                                    <span class="repo-icon octicon octicon-repo"></span>
+                                    <span class="repo-and-owner css-truncate-target">zman-hz/springboot-dubbo</span>
+                                </a>
+                            </li>
+                        
+                            <li class="public source">
+                                <a href="https://github.com/ZMan-HZ/DevTools" target="_blank" title="zman-hz/DevTools">
+                                    <span class="repo-icon octicon octicon-repo"></span>
+                                    <span class="repo-and-owner css-truncate-target">zman-hz/DevTools</span>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+    </div>
+</aside>
+
+
+
+
+
+        </section>
+        <footer class="hidden lg:block fixed bottom-0 left-0 sm:w-1/12 lg:w-1/6 bg-gray-100 z-40">
+    
+    <div class="footer-social-links">
+        
+            <a target="_blank" rel="noopener" href="https://github.com/zman-hz">
+                <i class="iconfont icon-github"></i>
+            </a>
+        
+            <a href="/null">
+                <i class="iconfont icon-telegram"></i>
+            </a>
+        
+            <a href="/null">
+                <i class="iconfont icon-twitter"></i>
+            </a>
+        
+            <a href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+            </a>
+        
+    </div>
+    
+    
+</footer>
+
+        <div id="mask" class="hidden mask fixed inset-0 bg-gray-900 opacity-75 z-40"></div>
+        <div id="search-view-container" class="hidden shadow-xl"></div>
+        
+<script src="/js/dom-event.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/yox@1.0.0-alpha.121/dist/standard/prod/yox.min.js"></script>
+
+
+<script src="/js/search.min.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'c7359a6732cadb4c7760',
+        clientSecret: '10f342a32949cd260a8f2e56817d1b2c00d3ac18',
+        repo: 'zman-hz.github.io',
+        owner: 'zman-hz',
+        admin: ['zman-hz'],
+        id: md5(location.pathname),
+        distractionFreeMode: true
+    })
+    gitalk.render('comments')
+</script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/lightgallery.js@1.1.3/dist/js/lightgallery.min.js"></script>
+    
+<script src="/js/light-gallery.min.js"></script>
+
+
+
+
+
+    </body>
+</html>
